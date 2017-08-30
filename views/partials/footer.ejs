@@ -1,0 +1,38 @@
+    <div class="container">
+        <p>YelpCamp 2017, by Damian Reiter</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <% if(!currentUser) { %>
+        <script>
+            $(".auth-req").attr("data-target", ".loginmodal");
+            $(".auth-req").attr("data-toggle", "modal");
+            $(".auth-req").removeAttr("href", "");
+            
+            $(".auth-req").on("click", function(){
+                $("#login-pill").addClass("active");
+                $("#register-pill").removeClass("active");
+                $("#mlogin").addClass("active in");
+                $("#mregister").removeClass("active in");
+            });
+            
+            $("#register-nav").on("click", function(){
+                $("#register-pill").addClass("active");
+                $("#login-pill").removeClass("active");
+                $("#mregister").addClass("active in");
+                $("#mlogin").removeClass("active in");
+            });
+            
+        </script>
+    <% } %>
+    <script>
+    console.log("running script");
+        $("#register-nav").on("click", function(){
+            $("#register-pill").addClass("active");
+            $("#login-pill").removeClass("active");
+            $("#mregister").addClass("active in");
+            $("#mlogin").removeClass("active in");
+        });
+    </script>
+    </body>
+</html>

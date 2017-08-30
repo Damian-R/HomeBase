@@ -1,0 +1,35 @@
+#comment_text {
+    width: 100%;
+    resize: none;
+}
+
+.log-btn {
+    cursor: pointer;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+.modal-content {
+    padding: 10px;
+}
+
+.edit-button {
+    margin-bottom: 10px !important;
+    margin-right: 10px;
+}
+
+.delete-button {
+    margin-bottom: 10px !important;
+}
