@@ -50,4 +50,19 @@ middlewareObj.isLoggedIn = function(req, res, next){
     }
 }
 
+middlewareObj.isProfileOwner = function(req, res, next){
+    if(req.isAuthenticated()){
+        if(req.params.id == req.user._id.toString()){
+            return next();
+        } else {
+            req.flash("error", "You are not the owner of that profile");
+            res.redirect("back");
+        }
+    } else {
+        req.flash("error", "You need to be logged in to do that");
+        res.redirect("back");
+    }
+    
+}
+
 module.exports = middlewareObj;

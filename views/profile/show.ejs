@@ -2,15 +2,8 @@
 <% include ../partials/navbar %>
 
 <div class="container">
-    <header class="jumbotron">
-        <div class="container">
-            <h1>Welcome to Home Base</h1>
-            <p>View our campgrounds</p>
-            <p><a class="btn btn-primary btn-lg auth-req" href="/campgrounds/new">Add new campground</a></p>
-        </div>
-    </header>
-    
-    <div class="row text-center" style="display: flex; flex-wrap: wrap">
+    <h1 class="text-center">Your Profile</h1>
+    <div>
         <% campgrounds.forEach(function(campground){ %>
             <div class="col-lg-4 col-sm-6">
                 <div class="thumbnail" href="/campgrounds/<%= campground._id %>">

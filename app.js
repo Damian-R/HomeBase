@@ -11,12 +11,14 @@ var bodyParser  = require("body-parser"),
     
 var commentRoutes       = require("./routes/comments"),
     campgroundRoutes    = require("./routes/campgrounds"),
-    authRoutes          = require("./routes/auth");
+    authRoutes          = require("./routes/auth"),
+    profileRoutes       = require("./routes/profile");
 
 console.log(process.env.DATABASEURL);
 
-mongoose.connect(process.env.DATABASEURL, {useMongoClient: true});
+// mongoose.connect(process.env.DATABASEURL, {useMongoClient: true});
 // mongoose.connect("mongodb://damian:damian@ds161823.mlab.com:61823/yelpcampdamianreiter", {useMongoClient: true});
+mongoose.connect("mongodb://localhost/3000", {useMongoClient: true});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
@@ -49,8 +51,10 @@ app.use(function(req, res, next){
 
 //route setup
 app.use(authRoutes);
+app.use("/profile", profileRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds", campgroundRoutes);
+
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server started on port " + process.env.PORT);

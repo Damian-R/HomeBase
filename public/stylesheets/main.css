@@ -3,6 +3,11 @@
     resize: none;
 }
 
+.navbar-left img {
+    height: 30px;
+    margin: 8px 0;
+}
+
 .log-btn {
     cursor: pointer;
 }
