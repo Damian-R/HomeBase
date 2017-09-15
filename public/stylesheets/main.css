@@ -38,3 +38,28 @@
 .delete-button {
     margin-bottom: 10px !important;
 }
+
+.empty-msg {
+    color: grey;
+    font-size: 50px;
+    width: 100%;
+    margin-top: -20px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.your-campgrounds {
+    height: 366px;
+    margin-top: 25px;
+}
+
+.profile-header {
+    display: inline;
+    height: 80px;
+}
+
+.campground-container {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
