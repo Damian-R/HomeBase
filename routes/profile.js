@@ -7,7 +7,7 @@ var express = require("express"),
 router.get("/:id", middleware.isProfileOwner, function(req, res){
     User.findById(req.params.id, function(err, user){
         if(!err){
-            Campground.find({}, function(err, campgrounds){
+            Campground.find({'author.id': user._id}, function(err, campgrounds){
                 if(!err){
                     console.log(user.username);
                     console.log(campgrounds);

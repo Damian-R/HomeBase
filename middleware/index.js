@@ -1,5 +1,6 @@
 var Campground = require("../models/campground");
 var Comment = require("../models/comment");
+var User    = require("../models/user");
 
 // all the middleware goes here
 var middlewareObj = {};
@@ -52,12 +53,16 @@ middlewareObj.isLoggedIn = function(req, res, next){
 
 middlewareObj.isProfileOwner = function(req, res, next){
     if(req.isAuthenticated()){
-        if(req.params.id == req.user._id.toString()){
-            return next();
-        } else {
-            req.flash("error", "You are not the owner of that profile");
-            res.redirect("back");
-        }
+        User.findById(req.params.id, function(err, user){
+            if(!err){
+                if(user._id.equals(req.user._id)){
+                    return next();
+                } else {
+                    req.flash("error", "You are not the owner of that profile");
+                    res.redirect("back");
+                }
+            } 
+        });
     } else {
         req.flash("error", "You need to be logged in to do that");
         res.redirect("back");

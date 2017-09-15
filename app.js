@@ -18,7 +18,7 @@ console.log(process.env.DATABASEURL);
 
 // mongoose.connect(process.env.DATABASEURL, {useMongoClient: true});
 // mongoose.connect("mongodb://damian:damian@ds161823.mlab.com:61823/yelpcampdamianreiter", {useMongoClient: true});
-mongoose.connect("mongodb://localhost/3000", {useMongoClient: true});
+mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
