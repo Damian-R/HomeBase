@@ -16,6 +16,10 @@
     width: 100%;
 }
 
+.cg-list .thumbnail img {
+    max-height: 225px;
+}
+
 .thumbnail {
     padding: 0;
     border-radius: 7px;
@@ -58,7 +62,7 @@
     height: 80px;
 }
 
-.campground-container {
+.cg-list {
     display: table;
     height: 100%;
     width: 100%;

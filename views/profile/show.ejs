@@ -5,18 +5,18 @@
     <h1 class="text-center">Your Profile</h1>
     <hr>
     <div class="profile-header">
-        <h2 style="display: inline;">Your campgrounds...</h2>
+        <h2 style="display: inline">Your campgrounds...</h2>
         <span style="float: right;"><a class="btn btn-primary btn-lg auth-req" href="/campgrounds/new">Add new campground</a></span>
     </div>
     
     
     <div class="well your-campgrounds">
-        <div class="row campground-container">
+        <div class="row cg-list">
             <% if(campgrounds.length === 0){ %>
                 <h1 class="empty-msg text-center">It's empty here :(</h1>
             <% } %>
             <% campgrounds.forEach(function(campground){ %>
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-4 col-md-offset-0 col-xs-8 col-xs-offset-2">
                     <div class="thumbnail text-center" href="/campgrounds/<%= campground._id %>">
                         <img src="<%= campground.image %>">
                         <div class="caption">

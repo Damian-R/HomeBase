@@ -6,6 +6,8 @@ var campSchema = mongoose.Schema({
      image: String,
      desc: String,
      price: String,
+     allratings: [Number],
+     avgrating: Number,
      comments: [
          {
              type: mongoose.Schema.Types.ObjectId,

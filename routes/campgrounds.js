@@ -23,11 +23,15 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var imageURL = req.body.imageURL;
     var desc = req.body.desc;
     var price = req.body.price;
+    var rating = Number(req.body.rating);
+    var allratings = [];
+    allratings.push(rating);
+    var avgrating = rating/allratings.length;
     var author = {
         id: req.user._id,
         username: req.user.username
     };
-    var newCampground = {name: name, image: imageURL, desc: desc, author: author, price: price};
+    var newCampground = {name: name, image: imageURL, desc: desc, author: author, price: price, allratings: allratings, avgrating: avgrating};
     Campground.create(newCampground, function(err, campground){
         if(!err){
             console.log(campground);
