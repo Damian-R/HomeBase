@@ -21,7 +21,7 @@
                     <p><%= campground.desc %></p>
                     <p class="by-text pull-left"><em>Submitted by: <%= campground.author.username %></em></p>
                     <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
-                    <button class="delete-button pull-right btn btn-danger" data-toggle="modal" data-target="#myModal">Delete Campground</button>
+                    <button class="delete-button pull-right btn btn-danger" data-toggle="modal" data-target="#delete-modal">Delete Campground</button>
                     <a class="edit-button pull-right btn btn-primary" href="/campgrounds/<%=campground._id%>/edit">Edit Campground</a>
                     <% } %>
                 </div>
@@ -63,7 +63,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
