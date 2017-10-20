@@ -17,17 +17,17 @@ router.get("/register", function(req, res){
 
 //register logic
 router.post("/register", function(req, res){
-    var newUser = new User({username: req.body.username});
-    User.register(newUser, req.body.password, function(err, user){
+    var newUser = new User({username: req.body.username}); //create new User in database
+    User.register(newUser, req.body.password, function(err, user){ //register the user with passport
         if(!err){
             passport.authenticate("local")(req, res, function(){
-                req.flash("success", "Welcome to YelpCamp, " + user.username + "!");
+                req.flash("success", "Welcome to YelpCamp, " + user.username + "!"); //if it is successful, flash a success message to the user
                 console.log(user);
                 res.redirect("/campgrounds");
             });
         } else {
             console.log(err);
-            return res.render("register", {error: err.message});
+            return res.render("register", {error: err.message}); //if there is an error, flash an error message
         }
     });
 });
@@ -46,8 +46,8 @@ router.post("/login", passport.authenticate("local", {
 
 //LOG OUT
 router.get("/logout", function(req, res){
-    req.logout();
-    req.flash("success", "successfully logged out");
+    req.logout(); // use passport to log the user out
+    req.flash("success", "successfully logged out"); // flash a success message to the user
     res.redirect("/campgrounds");
 });
 

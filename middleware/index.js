@@ -6,22 +6,22 @@ var User    = require("../models/user");
 var middlewareObj = {};
 
 middlewareObj.checkCampgroundOwnership = function(req, res, next){
-    if(req.isAuthenticated()){
+    if(req.isAuthenticated()){ // check if someone is logged in
         Campground.findById(req.params.id, function(err, campground){
             if(!err){
                 if(campground.author.id.equals(req.user._id)){
-                    return next();
+                    return next(); // if the campground author is equal to the currently logged in user, move on
                 } else {
-                    req.flash("error", "You do not own that campground");
+                    req.flash("error", "You do not own that campground"); // if not, flash an error
                     res.redirect("back");
                 }
             } else {
-                req.flash("error", "Campground not found");
+                req.flash("error", "Campground not found"); // if the campground couldn't even be found, flash an error
                 res.redirect("back");
             }
         });
     } else {
-        req.flash("error", "You need to be logged in to do that!");
+        req.flash("error", "You need to be logged in to do that!"); // if the user isn't even logged in, flash an error
     }
 }
 
@@ -46,7 +46,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next){
 }
 
 middlewareObj.isLoggedIn = function(req, res, next){
-    if(req.isAuthenticated()){
+    if(req.isAuthenticated()){ // simple check for if the user is currently logged in
         return next();
     }
 }

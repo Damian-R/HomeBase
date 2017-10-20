@@ -19,6 +19,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 });
 
 router.post("/", middleware.isLoggedIn, function(req, res){
+    // first check if the user is logged in using a middleware, then grab the campground info from the inputs
     var name = req.body.name;
     var imageURL = req.body.imageURL;
     var desc = req.body.desc;
@@ -31,8 +32,8 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         id: req.user._id,
         username: req.user.username
     };
-    var newCampground = {name: name, image: imageURL, desc: desc, author: author, price: price, allratings: allratings, avgrating: avgrating};
-    Campground.create(newCampground, function(err, campground){
+    var newCampground = {name: name, image: imageURL, desc: desc, author: author, price: price, allratings: allratings, avgrating: avgrating}; //create a new campground using all the information
+    Campground.create(newCampground, function(err, campground){ // add the campground to the database
         if(!err){
             console.log(campground);
             res.redirect("/campgrounds");

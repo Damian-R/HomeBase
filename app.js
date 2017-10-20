@@ -18,15 +18,15 @@ console.log(process.env.DATABASEURL);
 
 // ------------------------------------------------------------
 //                             TODO
-// 1. Add a rating system to campsites
-// 2. Add a 'Your Comments...' section to profile page
-// 3. Add a Google Maps location display for each campground
-// 4. Make images of campgrounds a carousel
+// 1. Add a 'Your Comments...' section to profile page
+// 2. Add a Google Maps location display for each campground
+// 3. Make images of campgrounds a carousel
+// 4. Add notifications if someone comments on your campground
 //
 // ------------------------------------------------------------
 
-mongoose.connect(process.env.DATABASEURL, {useMongoClient: true});
-// mongoose.connect("mongodb://damian:damian@ds161823.mlab.com:61823/yelpcampdamianreiter", {useMongoClient: true});
+// mongoose.connect(process.env.DATABASEURL, {useMongoClient: true});
+mongoose.connect("mongodb://damian:damian@ds161823.mlab.com:61823/yelpcampdamianreiter", {useMongoClient: true});
 // mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -49,8 +49,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
     res.locals.error = req.flash("error");
